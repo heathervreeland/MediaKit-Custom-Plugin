@@ -1,0 +1,267 @@
+/* This stylesheet is used for preview, not related to slider basic files. Do NOT include it in your project */
+
+
+
+#slider1 {
+	margin-top: 0px;
+	height: 400px;
+	width: 100%;
+}
+body  {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	color: #303030;
+}
+
+
+/* ======================== Sliders ===================== */
+
+
+#banner-rotator,
+#image-gallery,
+#content-slider {	
+	width: 100%;
+	height: 100%;
+	
+}
+#content-slider {
+	width: 960px;
+	height: 300px;
+}
+#content-slider .exampleButton {
+	cursor:pointer;
+	padding:5px 12px 8px !important;
+	font-size:14px;
+}
+#content-slider .imageItem {	
+	margin: 10px 35px 0;
+	float: left;
+}
+#content-slider .centeredSlide {
+	margin: 0 auto;
+	width: 850px;
+}
+#content-slider .slideTextBlock {
+	float:left;
+	width: 450px;
+	margin-left: -20px;
+	margin-top: 15px;
+}
+#content-slider h4 {
+	color: #555;
+	font-size:32px;
+	line-height:24px;	
+	margin: 5px 0 11px 0;
+}
+#content-slider .slideTextBlock p {
+	color:#000;	
+	margin-bottom:10px;
+	font-size:16px;			
+	font-family: Georgia;
+}
+#content-slider img, #content-slider iframe {
+	float:left;
+	background:#FFF;
+	padding:8px;
+	border:1px solid #EEE;
+}
+#content-slider .royalSlide,
+#content-slider .royalWrapper {
+	background: none;
+}
+#content-slider.royalSlider .royalControlNavOverflow {
+	margin-top: -25px;
+}
+#content-slider.royalSlider .arrow.right {	
+	right: 0;
+}
+#content-slider.royalSlider .arrow.left {	
+	left: 0;
+}
+		
+#banner-rotator {
+	width: 100%;
+	height: 400px;
+
+	margin: 0 auto;
+}
+
+
+
+#banner-rotator .royalCaptionItem {
+	font-family: Segoe UI, Lucida Grande, Arial, sans-serif;
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 38px;
+}
+#banner-rotator .sgMidText {	
+	font-size:1.3em;
+}
+#banner-rotator .sgSmallText {	
+	font-size:0.8em;
+}
+#banner-rotator .tintButton {			
+	background:no-repeat 0 0;
+	background-color:#33383e;
+	color:#EAEAEA;
+	cursor:pointer;
+	padding:5px 12px;
+	
+	-webkit-transition: background-color .2s ease-out;
+	-moz-transition: background-color .2s ease-out;	
+	-o-transition: background-color .2s ease-out;	
+	transition: background-color .2s ease-out;
+	text-decoration: none;
+}
+#banner-rotator .tintButton:hover {
+	background-color:#EAEAEA;
+	color:#33383e;
+}
+#banner-rotator .royalCaption {
+	position:absolute;		
+	top:0;
+	left:0;
+}	
+		
+		
+		
+#image-gallery {
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.30);-moz-box-shadow:0 1px 3px rgba(0,0,0,0.30);box-shadow:0 1px 3px rgba(0,0,0,0.30);
+	background:#F5F5F5;	
+	width: 900px;
+	height: 450px;
+}
+#image-gallery.royalSlider .royalControlNavOverflow a.royalThumb {
+	width: 140px;
+	height: 60px;
+}
+#image-gallery.royalSlider .royalControlNavOverflow a.royalThumb.current {		
+	border:3px solid #75af00 !important;
+	width:134px;
+	height:54px;
+}
+
+#image-gallery.royalSlider .royalControlNavOverflow a.royalThumb:hover {	
+	
+	width: 134px;
+	height: 54px;
+}
+#image-gallery .royalCaption {
+	position: static;
+}
+#image-gallery .royalCaptionItem,
+#image-gallery .staticTextBlock {
+	width: 100%;
+	color: #d2d2d2;
+	font-weight: bold;
+	text-align: center;
+	
+	top: 415px;
+	width: 370px;
+	left: 50%;
+	margin-left: -185px;
+}
+#image-gallery .royalCaptionItem a {
+	color: #d2d2d2;
+}
+
+
+#content-slider .royalWrapper {
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.30);
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.30);
+	box-shadow:0 1px 3px rgba(0,0,0,0.30);
+	background:#F5F5F5;
+	border-top:1px solid #FFF;
+	border-left:1px solid #FFF;
+	border-right:1px solid #FFF;	
+}
+
+/* ======================== Sliders END ===================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+
+
+
+
+
+
+
+

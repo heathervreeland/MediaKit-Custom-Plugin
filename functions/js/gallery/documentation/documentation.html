@@ -1,0 +1,622 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]--><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Royal Slider Documentation v8.1</title>
+    <link rel="stylesheet" href="assets/highlight/github.css">
+	<script src="assets/highlight/highlight.pack.js"></script>
+    <script>
+		hljs.tabReplace = '    ';
+		hljs.initHighlightingOnLoad();
+    </script>
+
+    <style>
+		body {
+		  color: #000;
+		  font: normal normal 400 1em/1.5em  Helvetica, Arial, sans-serif;
+		  margin:0;
+		  padding:0;
+		  
+		}
+		p,
+		ul#nav {
+			margin: 0;
+			padding: 0;
+		}
+		#nav li.sub {
+			margin-left:20px;
+			padding: 0;
+			list-style-type:none;
+		}
+		
+		p {
+			margin-bottom: 20px;
+		}
+		#logo {
+			margin-top:8px;
+			margin-bottom:5px;
+			font: normal normal 400 2em/0.5em  Georgia, sans-serif;
+			text-align:center;
+		}
+		#logo .ver {
+			font-family:Helvetica, Arial, sans-serif;
+			font-size:0.4em;
+			line-height:2.2em;
+			margin-top:4px;
+			display:block;
+			
+		}
+		#leftBar {
+			width:210px;
+			left: 20px;
+			position: fixed;
+			top: 20px;
+		}
+		#navHolder {
+			padding:10px 20px;
+			background:#F5F5F5;			
+			-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);
+			-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);			
+		}
+		#socialHolder {
+			padding:10px 20px;
+		}
+		#socialHolder a {			
+			color: #06A;
+			text-decoration:underline;		
+		}
+		#nav {		
+			list-style: none;
+		}
+		
+		#nav a {
+			
+			color: #06A;
+			text-decoration:underline;
+			margin-bottom:8px;
+			display:block;
+		}
+		#nav a:hover , #socialHolder a:hover {
+			color:#C00;
+		}
+		#nav .current a {
+			color:#000;
+			border: 0px;
+			text-decoration:none;
+		}
+		#container {
+			margin: 0 0 25px 250px;
+			width: 600px;
+		}
+		.section {
+			position:relative;
+			/*padding: 20px;*/
+		}
+		.section p:last-child {
+			margin-bottom: 0;
+		}
+		h2 {
+			font-size: 1.25em;
+			line-height: 1.333;
+			font-weight: bold;
+			
+			margin-top: 22px;
+			padding-top: 10px;
+			margin-bottom: 10px;
+		}
+		h3 {
+			font-size: 1em;
+			line-height: 1.333;
+			font-weight: normal;
+			
+			margin: 18px 0 6px;
+		}
+		p {
+			margin-bottom: 9px;	
+		}
+		
+		#nav li, p {
+			font-size: 13px;
+			line-height: 1.4em;
+		}
+		.faq-question {
+			font-weight:bold;
+			margin-bottom:5px;			
+			margin-top:20px;
+		}
+		.faq-answer {
+			
+		}
+		
+		
+		pre {
+			width:805px;
+			background:#FEFEFE;
+			margin:0 0 20px;
+			padding:5px 7px;;
+		}
+		pre .comment {
+			color:#6E6E5E;
+		}
+		code {
+			font-family: 'Courier New',monospace;
+			font-size:12px;
+			line-height:1.4;
+			background:	#F2F2F7;
+		}
+		pre code {
+			background :none;
+		}
+		p code {
+			padding:0 4px;
+		}
+		.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+		.clearfix:after { clear: both; }
+		.clearfix { zoom: 1; }
+		
+		.section ul {
+			
+			margin:0 0 9px -15px;	
+			
+		}
+		.footerThanks {
+			padding-top:20px;
+			text-align:center;
+			border-top:1px solid #333;
+			margin-top:40px;
+		}
+    </style>
+    <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+ 
+</head>
+
+<body>        
+       
+    <div id="leftBar">
+    	<div id="navHolder">
+	        <h1 id="logo">Royal Slider<br/><span class="ver">Documentation, v8.1</span></h1> 
+	        <ul id="nav">
+	          <li><a href="#basic-usage">Basic Usage</a></li>
+	          <li><a href="#html-structure">HTML Structure</a>
+	          <li><a href="#css-ui-styling">Skins & CSS styling</a></li>
+	          <li><a href="#javascript-options">Javascript Options</a></li>          
+	          <li><a href="#html-captions">HTML Captions</a></li>          
+	          <li><a href="#thumbnails">Thumbnails</a></li>
+	          <li><a href="#lazy-loading">Lazy Loading</a></li>
+	          <li><a href="#public-methods-and-properties">Public Methods, Properties</a></li>
+	          <li><a href="#faq">FAQ</a></li>
+	          <li><a href="#changelog">Changelog</a></li>
+	        </ul>
+    	</div>
+    	<div id="socialHolder">
+    		<p>Follow me on <a href="http://goo.gl/o6RlU">Twitter</a> or <a href="http://goo.gl/2e0pU">CodeCanyon</a> to get notified about slider updates.</p>
+    	</div>
+    </div>     
+    
+    
+
+<div id="container">
+	
+	<div class="section clearfix" id="basic-usage">
+		<p style='margin-top:35px;'>Thanks for purchasing RoyalSlider. If you have any questions that are beyond the scope of this help file, you've found a bug, need new feature, or you just want me to show your website using this slider, please feel free to email me via <a href="http://goo.gl/e3vgi">contact form</a> on my profile.</p>
+  		<h2>Basic Usage</h2>        
+        <p>To use the Royal Slider you have to include the following files in your page:</p>
+        <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/royalslider.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/royalslider-skins/default/default.css&quot;&gt;
+&lt;script src=&#39;js/jquery-1.6.2.min.js&#39;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/jquery.easing.1.3.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/royal-slider-8.1.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+		<p>Then add following HTML code in the body section ("default" CSS class means that slider is with default skin):</p>
+		<pre><code>&lt;div id=&quot;mySlider&quot; class=&quot;royalSlider default&quot;&gt;        
+    &lt;!-- Container of slides(images) --&gt;       
+    &lt;ul class=&quot;royalSlidesContainer&quot;&gt;
+    	&lt;!-- Slides --&gt;
+		&lt;li class=&quot;royalSlide&quot;&gt;
+			&lt;img class=&quot;royalImage&quot; src=&quot;img/image1.jpg&quot; width=&quot;650&quot; height=&quot;300&quot;/&gt;
+		&lt;/li&gt; 
+		&lt;li class=&quot;royalSlide&quot;&gt;
+			&lt;img class=&quot;royalImage&quot; src=&quot;img/image2.jpg&quot; width=&quot;650&quot; height=&quot;300&quot;/&gt;
+		    &lt;div class=&quot;royalCaption&quot;&gt;
+		    	&lt;!-- Caption items, can be &lt;h2&gt;, &lt;p&gt;, &lt;div&gt;, or other block --&gt;
+		        &lt;div class=&quot;royalCaptionItem&quot; data-move-offset=&quot;15&quot;&gt;Caption 1 for image 2&lt;/div&gt;
+		        &lt;h2 class=&quot;royalCaptionItem&quot; data-show-effect=&quot;fade movetop&quot;&gt;Caption 2 for image 2&lt;/h2&gt;
+		    &lt;/div&gt; 
+		 &lt;/li&gt; 
+		&lt;li class=&quot;royalSlide&quot;&gt;
+			&lt;img class=&quot;royalImage&quot; src=&quot;img/image3.jpg&quot; width=&quot;650&quot; height=&quot;300&quot;/&gt;
+		&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        <p>And finally initialize slider (updated in version 3.0):</p>
+        <pre><code>&lt;script&gt;
+$(document).ready(function() {
+	$(&quot;#mySlider&quot;).royalSlider({
+		captionShowEffects:[&quot;moveleft&quot;, &quot;fade&quot;],
+	    directionNavAutoHide: true
+		/* other options go here, view <a href="#javascript-options">javascript options</a> to learn more */			
+	});  
+});
+&lt;/script&gt;</code></pre>
+	</div>
+	<div class="section clearfix" id="html-structure">
+    	<h2>HTML struture</h2>       
+        <pre><code class="html">&lt;div id=&quot;mySlider&quot; class=&quot;royalSlider default&quot;&gt;
+    &lt;!-- Option loading(welcome screen), remove this tag if you don&#39;t need it. Isn't removed if JS is disabled. --&gt;
+    &lt;div class=&quot;royalLoadingScreen&quot;&gt;&lt;p class=&quot;spinner&quot;&gt;Loading slider...&lt;/p&gt;&lt;/div&gt;         
+    &lt;!-- Container of slides --&gt;       
+    &lt;ul class=&quot;royalSlidesContainer&quot;&gt;    	  	
+    	&lt;!-- Simple slide with simple image (royalSlide class must be set) --&gt;
+        &lt;li class=&quot;royalSlide&quot;&gt;
+        	&lt;img class=&quot;royalImage&quot; src=&quot;img/image.jpg&quot; width=&quot;600&quot; height=&quot;300&quot;/&gt;
+        &lt;/li&gt;
+        
+        &lt;!-- Slide with lazy loaded image, use data-src attribute to set image path --&gt;
+        &lt;li class=&quot;royalSlide&quot; data-src=&quot;img/image.jpg&quot;&gt;&lt;/li&gt; 
+        
+        &lt;!-- Slide with image and static content --&gt;
+        &lt;li class=&quot;royalSlide&quot;&gt;
+        	&lt;img class=&quot;royalImage&quot; src=&quot;img/image.jpg&quot; width=&quot;600&quot; height=&quot;300&quot;/&gt;
+        	&lt;div&gt;I&#39;m a static content&lt;/div&gt;
+        &lt;/li&gt;
+        
+        &lt;!-- Slide with lazy loading and animated captions --&gt;
+        &lt;li class=&quot;royalSlide&quot; data-src=&quot;img/image.jpg&quot;&gt;
+            &lt;div class=&quot;royalCaption&quot;&gt;
+            	&lt;!-- Caption items, can be &lt;h2&gt;, &lt;p&gt;, &lt;div&gt;, or any other block tag. 
+            		 Make sure each animated caption has royalCaptionItem class --&gt;
+                &lt;div class=&quot;royalCaptionItem&quot; data-move-offset=&quot;15&quot;&gt;Caption 1 for image&lt;/div&gt;
+                &lt;h2 class=&quot;royalCaptionItem&quot; data-show-effect=&quot;fade movetop&quot;&gt;Caption 2 for image&lt;/h2&gt;
+            &lt;/div&gt; 
+         &lt;/li&gt; 
+         
+        &lt;!-- Slide without image, but with static content and animated caption --&gt;
+        &lt;li class=&quot;royalSlide&quot;&gt;        	
+            &lt;div&gt;I&#39;m a static content&lt;/div&gt;
+            &lt;div class=&quot;royalCaption&quot;&gt;            	
+                &lt;div class=&quot;royalCaptionItem&quot;&gt;I&#39;m animated caption&lt;/div&gt;               
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- Controls (arrows, bullet nav, thumbs) will be added automatically by js here --&gt;       
+&lt;/div&gt;</code></pre>		
+    </div>
+    <div class="section clearfix" id="css-ui-styling">
+    	<h2>Skins & CSS styling</h2>
+        <p>Setting width and height of slider (set size in '%' to make it fluid):</p>        
+        <pre><code>&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+	/* Width and height of slider in %, px or em */
+    #mySlider {
+		width: 100%;			
+		height: 400px;
+	}
+&lt;/style&gt;</code></pre>
+		<p>RoyalSlider plugin has three pre-build skins. To add skin just add its css class to main 'royalSlider' tag and include skin css file. Skins can be found in "css/royalslider-skins" folder. Each skin includes CSS, PNG and PSD file.</p>
+        <pre><code>&lt;!-- Default skin — white controls on black background. CSS class - "default". --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/royalslider-skins/default/default.css&quot;&gt;
+
+&lt;!-- iSkin — 3d-styled skin. CSS class - "iskin". --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/royalslider-skins/iskin/iskin.css&quot;&gt;
+
+&lt;!-- Minimal — simple skin with white controls. CSS class - "minimal". --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/royalslider-skins/minimal/minimal.css&quot;&gt;</code></pre>
+        <p>You can edit these skins or create your own.</p>
+    </div>
+    <div class="section clearfix" id="javascript-options">
+    	<h2>Javascript Options</h2>
+        <p>Default options and their explanations:</p>
+        <pre><code class="javascript">&lt;script&gt;	
+$(document).ready(function() {
+	
+  $(&quot;#mySlider&quot;).royalSlider({
+    
+    preloadNearbyImages:true,               // Preloads two nearby images, if they have lazy loading enabled
+	imageScaleMode:"none",                  // Scale mode of all images. Can be "fill", "fit" or "none"
+	imageAlignCenter:false,		    // Aligns all images to slide center
+				
+	keyboardNavEnabled:false,	            // Keyboard arrows navigation	
+			
+    directionNavEnabled: true,              // Direction(arrow) navigation
+    directionNavAutoHide: false,            // Direction(arrow) navigation auto hide on hover. 
+                                            // (On touch devices arrows are always shown)
+    hideArrowOnLastSlide:true,              // Auto hide right arrow on last slide and left on first slide.
+											// Always true for touch devices.
+                                            
+    slideTransitionType: "move",            // Slide transition type: Can be "fade" or "move".
+    slideTransitionSpeed:400,               // Slide transition speed in ms (1s = 1000ms).
+    slideTransitionEasing:&quot;easeInOutSine&quot;,  // Easing type for slide transition. <a href="http://hosted.zeh.com.br/tweener/docs/en-us/misc/transitions.html">View supported easing types</a>
+    
+    captionAnimationEnabled: true,          // Set to false if you want to remove all animations from captions  
+    captionShowEffects:[&quot;fade&quot;,&quot;moveleft&quot;], // Default array of show effects. 
+                                            // Types: &#39;fade&#39;, &#39;movetop&#39;, &#39;movebottom&#39;, &#39;moveleft&#39;, &#39;moveright&#39;.
+                                            // e.g. [&#39;fade&#39;, &#39;movetop&#39;], [&#39;fade&#39;], [&#39;movebottom&#39;]
+                                            
+    captionMoveOffset:20,                   // Default distance for move effect in px
+    captionShowSpeed:400,                   // Default caption show speed in ms
+    captionShowEasing:&quot;easeOutCubic&quot;,       // Default caption show easing
+    captionShowDelay:200,                   // Default delay between captions on one slide show
+    
+    controlNavEnabled: true,                // Control navigation (bullets, thumbs)  enabled
+    controlNavThumbs: false,                // Use thumbs for control navigation
+                                            // (use data-thumb=&quot;myThumb.jpg&quot; attribute in html royalSlide div)
+	controlNavThumbsNavigation:true,        // Enables navigation for thumbs
+	controlNavThumbsSpeed:400,		    // Thumbnails navigation move speed (1000ms = 1s)
+	controlNavThumbsEasing:"easeInOutSine", // Thumbnails navigation easing type
+	
+    slideshowEnabled: false,                // Autoslideshow enabled          
+    slideshowDelay:5000,                    // Delay between slides in slideshow
+    slideshowPauseOnHover: true,            // Pause slideshow on hover
+    slideshowAutoStart:true,                // Auto start slideshow 
+    
+    lockAxis: true,                         // Drag navigation only on one axis at once
+    
+    welcomeScreenEnabled: false,            // Slider welcome(loading) screen enabled
+    welcomeScreenShowSpeed:500,             // Welcome screen fade out speed
+    
+    minSlideOffset:20,                      // Minimum distance in pixels to show next slide while dragging    
+    
+    disableTranslate3d:false,               // Disables CSS3 transforms on touch devices
+                                            
+                                            
+    autoScaleSlider: false,                 // Overrides css slider size settings. 
+                                            // Sets slider height based on properties below
+                                            // Slider CSS width must be set to dynamic value, for example 100%.
+	autoScaleSliderWidth: 940,              // Base slider width
+	autoScaleSliderHeight: 400,             // Base slider height
+
+    startSlideIndex: 0,			    // Start slide index (starting from 0).
+	slideSpacing: 0,			    // Distance between slides in pixels.
+			
+	blockLinksOnDrag: true,		    // Blocks all links when dragging.
+	nonDraggableClassEnabled: false,        // Prevents dragging on all elements that have 'non-draggable' class.
+                                            // Works only inside slides. Turned off by default to improve performance.
+    
+    dragUsingMouse:true,                    // Drag using mouse on devices with no touch support
+    
+    beforeSlideChange: function(){},        // Callback, triggers before slide transition
+    afterSlideChange: function(){},         // Callback, triggers after slide transition	
+    
+    beforeLoadStart:function() {},	    // Callback, triggers before first image loading starts
+	loadingComplete: function() {},         // Triggers after load complete and before welcome screen animation
+	allComplete: function() {}	            // Callback, triggers after loading and welcome screen animation
+  });	
+});			  
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="section clearfix" id="thumbnails">
+    	<h2>Thumbnails</h2>
+    	<p>To enable thumbnails you have to add <code>data-thumb</code> attribute to each slide. And set javascript <code>controlNavEnabled</code> and <code>controlNavThumbs</code> properties to <code>true</code>.</p>
+    	<pre><code>&lt;li class=&quot;royalSlide&quot; data-thumb=&quot;img/mythumb1.jpg&quot;&gt;
+	&lt;img class=&quot;royalImage&quot; src=&quot;img/myimage1.jpg&quot; width=&quot;600&quot; height=&quot;350&quot;/&gt; 
+&lt;/li&gt;
+&lt;li class=&quot;royalSlide&quot; data-thumb=&quot;img/mythumb2.jpg&quot;&gt;
+	&lt;img class=&quot;royalImage&quot; src=&quot;img/myimage2.jpg&quot; width=&quot;600&quot; height=&quot;350&quot;/&gt; 
+&lt;/li&gt;</code></pre>
+	   	<p>To enable thumbnails scroller set <code>controlNavThumbsNavigation</code> to true. To change thumbnails spacing edit <code>margin-right</code> in slider css file, style <code>.royalControlNavOverflow a.royalThumb</code>. You can change thumbnails size here too.</p>
+    </div>
+    <div class="section clearfix" id="html-captions">    
+        <h2>HTML Captions</h2> 
+        <p>You can add unlimited number of captions with any content inside inside each slide, but don't use too much of them, because it can hurt slider performance.</p>
+        <p>These settings are optional and override default settings in javascript (remove comments before pasting):</p>
+        <pre><code class="html">...
+&lt;div class=&quot;royalCaptionItem&quot; 
+	data-show-effect=&quot;fade movetop&quot;   // Show effects separated by one space.
+                                      // Types: 'fade', 'movetop', 'movebottom', 'moveleft', 'moveright'
+                                      // e.g. 'fade movetop', 'fade', 'movebottom', 'fade moveleft'
+	data-move-offset=&quot;15&quot;             // Distance for move* effect in pixels
+	data-delay=&quot;500&quot;                  // Delay before caption is shown in ms. (1s = 1000ms)
+	data-easing=&quot;easeOutBack&quot;         // Caption show easing. <a href='http://hosted.zeh.com.br/tweener/docs/en-us/misc/transitions.html'>View supported easing types</a>
+	data-speed=&quot;2000&quot;                 // Caption show animation speed in ms. 
+&gt;Caption item content.(text,image or other)&lt;/div&gt;
+...</code></pre>
+        <p>To position captions on slide use CSS properties. For animated captions use <code>left</code> and <code>top</code> CSS properties to position them.</p>
+        <pre><code>...
+&lt;li class=&quot;royalSlide&quot; style=&quot;background-image:url(image.jpg);&quot;&gt; 
+	&lt;div class=&quot;royalCaption&quot; style=&quot;left:25%; top:120px; color:#C00;&quot;&gt;
+		&lt;div class=&quot;royalCaptionItem&quot; data-show-effect=&quot;fade moveleft&quot;&gt;Caption one&lt;/div&gt;
+		&lt;div class=&quot;royalCaptionItem&quot; data-show-effect=&quot;fade movetop&quot; data-speed=&quot;400&quot;&gt;Caption two&lt;/div&gt;
+		&lt;div class=&quot;royalCaptionItem&quot; data-show-effect=&quot;fade&quot;&gt;Caption three&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/li&gt;
+...</code></pre>
+
+	</div>
+	<div class="section clearfix" id="lazy-loading">    
+        <h2>Lazy Loading</h2> 
+        <p>To enable lazy loading add <code>data-src</code> attribute with path to image to slide. Do <b>not</b> add image tag with <code>royalImage</code> class inside slide.</p>
+        <pre><code>&lt;li class=&quot;royalSlide&quot; data-src=&quot;img/image1.jpg&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;royalSlide&quot; data-src=&quot;img/image2.jpg&quot;&gt;&lt;/li&gt;</code></pre>
+		<p>If you want to disable preloading of two nearby images after current is loaded set <code>preloadNearbyImages</code> javascript property to false.</p>
+	</div>
+    <div class="section clearfix" id="public-methods-and-properties">    
+        <h2>Public Methods, Properties</h2> 
+        <pre><code class="javascript">&lt;script&gt;
+        
+    // Getting RoyalSlider instance (new in update 3.0)
+    var mySliderInstance = $(&quot;#mySlider&quot;).royalSlider({
+    	/* options go here */
+    }).data("royalSlider");	
+    //or
+    var mySliderInstance = $(&quot;#mySlider&quot;).data("royalSlider");
+    
+        
+	
+	// Public methods
+	mySliderInstance.goTo(1);            // Go to to second slide. 
+										 // Make sure that you pass integer to this function.
+										 
+	mySliderInstance.goToSilent(0)       // Go to first slide without animation
+	
+	mySliderInstance.next();             // Go to next slide
+	mySliderInstance.prev();
+	
+	mySliderInstance.resumeSlideshow();  // Play slideshow 									     						     
+	mySliderInstance.stopSlideshow();    // Stop slideshow	
+	
+	mySliderInstance.updateSliderSize(); // Update slider size (use it if you've got sizing issues)	
+	mySliderInstance.destroy();          // Destroy all slider events and remove slider element
+	
+	
+	// Public properties			
+	mySliderInstance.numSlides           // Number of slides
+	mySliderInstance.currentSlideId      // Current slide id
+	mySliderInstance.lastSlideId         // Last(previous) slide id    
+	mySliderInstance.sliderWidth		 // Slider width
+	mySliderInstance.sliderHeight		 // Slider height
+    
+&lt;/script&gt;</code></pre>
+	<p>Examples:</p>
+	<pre><code>&lt;script&gt;
+	//Example, replacing arrows with arrow symbols and adding &quot;1 / 5&quot; naigation
+	var mySliderInstance = $(&#39;#sliderId&#39;).royalSlider({
+		slideTransitionSpeed:400,
+		beforeLoadStart:function() {					
+			$(&quot;p.navId&quot;).text((this.currentSlideId+1) + &quot;/&quot;  +   (this.numSlides) );
+			this.arrowLeft.html(&quot;&amp;larr;&quot;);
+			this.arrowRight.html(&quot;&amp;rarr;&quot;);
+		},
+		beforeSlideChange:function() {
+			$(&quot;p.navId&quot;).text((this.currentSlideId+1) + &quot;/&quot;  +   (this.numSlides) );
+		}		
+	}).data(&quot;royalSlider&quot;);
+	
+	
+    // Example, adding toogle slideshow button (button id is &quot;myToogleSlideshowButton&quot;)
+	$(&quot;#myToogleSlideshowButton&quot;).click(function(){
+        if(mySliderInstance.isSlideshowRunning) {
+            $(this).html(&quot;Play slideshow&quot;);
+            mySliderInstance.stopSlideshow();          
+        } else {
+            $(this).html(&quot;Stop slideshow&quot;);
+            mySliderInstance.resumeSlideshow();
+        }
+    });
+&lt;/script&gt;</code></pre>
+    </div>
+    <div class="section clearfix" id="faq">
+    <h2>FAQ</h2>
+    <p class='faq-question'>Element inside slide isn't displayed properly, but works correctly outside the slider.</p>
+    <p class='faq-answer'>Usually this problem appears with <code>input</code> or <code>audio</code> tags. Try to set <code>nonDraggableClassEnabled</code> js property to <code>true</code> and add <code>non-draggable</code> class to element.</p>
+    
+    <p class='faq-question'>How do I put full-size link in each slide?</p>
+    <p class='faq-answer'>You can wrap <code>img</code> tag with <code>a</code> tag, or create empty full-size overlay with link inside slide. Also make sure that <code>blockLinksOnDrag</code> js property is set to true.</p>
+  
+  	<p class='faq-question'>How do I resize slider proportionally?</p>
+    <p class='faq-answer'>Set "autoScaleSlider" js propertty to true. Slider CSS width must be set to dynamic value, such as "100%", or should change with help of media queries. If you want images in slides scale down and center too, so set "imageAlignCenter" to true and "imageScaleMode" to "fill" or "fit". </p>
+  	
+  	<p class='faq-question'>I have black border around slider, how can I get rid of it?</p>
+    <p class='faq-answer'>This border is likely slider background, which pops up because of mobile browser scaling issue. You need to set viewport meta tag to no-scale, or remove slider background (royalslider.css line 30).</p>
+    
+    </div>
+    
+    <div class="section clearfix" id="changelog">
+    	<h2>Changelog</h2>
+    	<h3>Version 8.1</h3>
+    	<ul>
+        	<li><p>Added "autoScaleSlider" property. It overrides default slider height, sets it based on "autoScaleSliderWidth" and "autoScaleSliderHeight". Slider CSS width must be set to dynamic value such as "100%", or should change with help of media queries. This allows to scale slider down proportionally down to mobile.</p></li>  
+        </ul>
+    	<h3>Version 8.0</h3>
+    	<ul>
+        	<li><p>Improved navigation logic. Slides move with speed of your swipe.</p></li>    
+        	<li><p>Fixed swiping on orientation change bug.</p></li>    
+        </ul>
+    	<h3>Version 7.9.1</h3>
+    	<ul>
+        	<li><p>Fixed !important issue, when slide spacing is applied.</p></li>    
+        </ul>
+    	<h3>Version 7.9</h3>
+    	<ul>
+        	<li><p>Added !important to margins, paddings, list-styles of royalSlidesContainer, royalSlide and royalImage.</p></li>    
+        	<li><p>Fixed touch navigation in iOS with jQuery 1.4 and lower.</p></li>           	
+        </ul>
+    	<h3>Version 7.8</h3>
+    	<ul>
+        	<li><p>Fixed BlackBerry image loading bug.</p></li>    
+        	<li><p>Fixed fade transition bug in some browsers.</p></li>           	
+        </ul>
+        <h3>Version 7.7</h3>
+    	<ul>
+        	<li><p>Improved navigation logic. Added <code>lockAxis</code> javascript property that allows touch-dragging simultaneously only on one axis.</p></li>    
+        	<li><p>Fixed slideshow pause on hover bug on some devices. </p></li>           	
+        </ul>
+    	<h3>Version 7.5</h3>
+    	<ul>
+        	<li><p>Added fade transition. <code>slideTransitionType</code> javascript property can be set to "fade" or "move".</p></li>    
+        	<li><p>Added background gradient to each slide (royalslider.css line 28). </p></li>           	
+        </ul>
+    	<h3>Version 7.0</h3>    	
+        <ul>
+        	<li><p>Added three new skins. Now you need to include skin CSS file. See <a href="#css-ui-styling">skins & CSS styling section</a>.</p></li>      
+        	<li><p>Added spinner graphics instead of 'Loading image...' text.</p></li>
+        	<li><p>Dragging cursor is now set using CSS and uses .png cursor by default.</p></li>     
+        	<li><p>Thumbnails scroller now can be fluid.</p></li>
+        	<li><p>Thumbnails scroller with arrows is wrapped into <code>thumbsAndArrowsContainer</code> CSS class.</p></li>
+        	<li><p>Added <code>dragUsingMouse</code> js property that adds/removes dragging functionality using mouse, but leaves dragging with touch.</p></li>
+        	<li><p><code>hideArrowOnLastSlide</code> js property is now set to <code>true</code> by default.</p></li>
+        	<li><p><code>welcomeScreenEnabled</code> js property is now set to <code>false</code> by default.</p></li>       	
+        </ul>
+    	<h3>Version 6.0</h3>
+        <ul>
+        	<li><p>Added <code>startSlideIndex</code> js property to set start slider index.</p></li>      
+        	<li><p>Added <code>slideSpacing</code> js property to set spacing between slides in pixels.</p></li>
+        	<li><p>Added <code>blockLinksOnDrag</code> js property that blocks navigating to url when dragging slides (turned on by default).</p></li>
+        	<li><p>Added <code>nonDraggableClassEnabled</code> js property prevents dragging completely on all elements that have <code>non-draggable</code> css class inside slide.</p></li>
+        	<li><p>Added <code>goToSilent</code> public method, works exactly like <code>goTo</code> method but navigates to slide without animation.</p></li>
+        	<li><p>Improved <code>destroy()</code> method that removes slider element and cleans up all events.</p></li>
+        </ul>
+    	<h3>Version 5.1</h3>
+        <ul>
+        	<li><p>Fixed sizing issue, when 100% height is set.</p></li>      
+			<li><p>Fixed stop and resume slideshow public methods when pause on hover is enabled.</p></li>        	 	
+        </ul>
+    	<h3>Version 5.0</h3>
+        <ul>
+        	<li><p>Major performance optimization for iOS, Android and Blackberry touch devices that support CSS3 3d transforms. You can set <code>disableTranslate3d</code> option to <code>true</code> if you want to remove this behaviour. When CSS3 transform is applied advanced easing functions are removed  for better performance.</p></li>
+        	<li><p>Added keyboard arrows navigation option, see <code>keyboardNavEnabled</code> javascript property.</p></li>
+        	<li><p>Javascript properties <code>imageScaleMode</code> and <code>imageAlignCenter</code> are now set to <code>none</code> and <code>false</code> by default.</p></li>                      
+            <li><p>Other small performance improvements.</p></li>
+        </ul>
+    	<h3>Version 4.0</h3>
+        <ul>
+        	<li><p>Added smart <a href="#lazy-loading">lazy loading</a> option with ability to preload nearby images, when current is loaded.</p></li>
+        	<li><p>Updated thumbnails scroller navigation logic. Now you can use easilly change size and spacing of thumbnails. See <a href="#thumbnails">thumbnails section</a> to learn more.</p></li>
+            <li><p>Added ability to change images scale mode. Javascript options added: <code>imageScaleMode</code> and <code>imageAlignCenter</code>.</p></li>
+            <li><p><b>Changed basic HTML structure</b>, now you can add <code>data-src</code> attribute to <code>royalSlide</code> to enable lazy loading. See <a href="#lazy-loading">lazy loading section</a> to learn more.</p></li>
+            <li><p>Added <code>disabled</code> style to navigation arrow if disabled, instead of removing visibility.</p></li>            
+            <li><p>Other minor performance improvements and bug fixes.</p></li>
+        </ul>
+    	<h3>Version 3.0</h3>
+        <ul>
+        	<li><p>Added optional thumbnails scroller. New javascript properties: <code>controlNavThumbsNavigation</code>, <code>controlNavThumbsSpeed</code> amd <code>controlNavThumbsEasing</code>.</p></li>
+        	<li><p>Completely rewritten class and changed intialization, to comply with jQuery plugin standarts.</p></li>
+            <li><p>Fixed "jumping" on top when clicking navigation.</p></li>
+            <li><p>Fixed resizing of multiple slider instances on one page.</p></li>
+            <li><p>Other minor performance improvements and bug fixes.</p></li>
+        </ul>
+    	<h3>Version 2.1</h3>
+        <ul>
+        	<li><p>Fixed some compability issues.</p></li>
+            <li><p>Fixed pixelated captions with fade animation in ie8 and lower. (see "removeCaptionsOpacityInIE8" js option)</p></li>
+        </ul>
+        <h3>Version 2.0</h3>
+        <ul>
+        	<li><p>Added "slideshowAutoStart" javascript option.</p></li>
+            <li><p>Added new skin and new example (content slider).</p></li>
+            <li><p>Some minor performance improvements and bug fixes.</p></li>
+        </ul>
+        <h3>Version 1.1</h3>
+        <ul>
+        	<li><p>Added option to auto hide right arrow on last slide and left on first slide. Always applied for touch devices.</p></li>
+            <li><p>Some minor performance improvements.</p></li>
+        </ul>
+        <p class='footerThanks'>Designed and developed by <a href="http://twitter.com/dimsemenov">Dmitry Semenov</a>.</p>              
+	</div>
+</div>
+</body>
+</html>

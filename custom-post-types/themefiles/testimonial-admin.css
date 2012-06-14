@@ -1,0 +1,22 @@
+/******************* 
+ *
+ * Admin Layout 
+ *
+ ********************/
+
+/* meta box styles */
+#testimonial-meta { }
+  #testimonial-meta fieldset.meta-fields { padding:10px 0;border-bottom:1px solid #EEE; }
+  #testimonial-meta fieldset.meta-fields label { overflow:hidden;float:left;width:200px; }
+  #testimonial-meta fieldset.meta-fields input, 
+  #testimonial-meta fieldset.meta-fields textarea { width:500px; }
+  #testimonial-meta fieldset.meta-fields#file-upload { width:400px; margin:0 0 0 200px; border:none; }  
+  #testimonial-meta fieldset.meta-fields#file-upload input.file-upload-checkbox, 
+  #testimonial-meta fieldset.meta-fields#file-upload label { float:left; height:20px; margin:0; padding:0; line-height:20px; }
+  #testimonial-meta fieldset.meta-fields#file-upload input.file-upload-checkbox { width:20px; margin-right:5px; }  
+  #testimonial-meta fieldset.meta-fields#file-upload label { width:250px; }  
+  #testimonial-meta fieldset.meta-fields .input-description { width:500px;margin:5px 0 0 200px; font-style:italic; color:#777; }  
+
+.postbox { margin:20px 40px 50px 0; }
+  .postbox .hndle { padding:10px; }
+  .postbox:hover .handlediv { background: transparent url(../images/arrows.png) no-repeat 6px 7px; }

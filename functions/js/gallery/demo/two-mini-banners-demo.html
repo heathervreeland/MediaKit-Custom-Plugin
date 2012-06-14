@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>   
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>RoyalSlider Demo</title>  
+	
+	
+ 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> 	
+ 	
+ 	
+    <link rel="stylesheet" href="css/royalslider.css" />
+    <link rel="stylesheet" href="css/royalslider-skins/default/default.css" />
+    <link rel="stylesheet" href="css/royalslider-skins/iskin/iskin.css" />
+    
+    <!-- preview-related stylesheet -->
+    <link rel="stylesheet" href="css/royalslider-preview.css" />
+    
+    
+    
+    <script src="js/jquery-1.6.2.min.js"></script>      
+	<script src="js/jquery.easing.1.3.min.js"></script> 
+    <script src="js/royal-slider-8.1.min.js"></script>
+    
+    
+    
+    <style type="text/css">
+   		#bannersContainer .midTextWithBG{
+			font-size:1.75em;
+			line-height:1em;
+			background:#BD1550;
+			padding:4px 10px 5px;
+			
+			font-weight:bold;
+			font-family: Arial, sans-serif;
+			color:#FFF;	
+			white-space: nowrap;
+		}
+		#bannersContainer .navId {
+			font-size:1.4em;
+			width:100%;
+			text-align:center;	
+			margin: 2px 0 0 0;
+			padding: 0;
+			color: #555;
+		}
+		#bannersContainer .created-with-api-arrow {
+			top: 290px;
+			left: 420px;
+			display: block;
+			position: absolute;
+			
+			background: url('../img/royalslider-preview-sprite.png') no-repeat -260px -303px;
+			width: 102px;
+			height: 43px;
+		}
+		#bannersContainer {
+			height:400px;
+			width:730px;
+			margin:0 auto;
+			position: relative;
+		}		
+		#banner1 {       
+			top:75px;
+			width: 300px;			
+			height: 250px;
+			float:left;
+		}
+		#banner2 {
+			left:30px;
+			float:left;
+			top:125px;
+			width: 400px;			
+		 	height: 150px;
+		}
+		#banner2 .arrow {
+			background:none;
+				
+			width: 35px;
+			height: 35px;
+			top:150px;	
+			
+			font-size:24px;
+			color: #555;
+			margin: 0;
+			text-decoration: none;
+		}
+		#banner2 .arrow.disabled {
+			color: #CCC;
+		}
+		#banner2 .arrow.left {
+			text-align:left;	
+		}
+		#banner2 .arrow.right {
+			text-align:right;	
+		} 
+    </style>
+</head>
+<body>	
+	<div id="main-body">		
+		<h1>RoyalSlider Demo: Two Mini-Banners</h1>
+		<div id="slider-ajax-container">
+<div id="bannersContainer">
+            	
+        <div id="banner1" class="royalSlider iskin clearfix">           
+            <ul class="royalSlidesContainer" id="testId">
+          	   <li class="royalSlide" style="background:#83AF9B;"> 
+                    <div class="royalCaption">
+                    	<div class="royalCaptionItem midTextWithBG" data-easing="easeOutSine" data-show-effect="moveleft fade" data-move-offset="50" style="top:59px;  background-color:#FE4365; left:78px;">Use Slider</div>
+                        <div class="royalCaptionItem midTextWithBG" data-easing="easeOutSine" data-show-effect="moveright fade" data-move-offset="50" style="background-color:#FC9D9A; top:106px; left:47px;">as Presentation</div>
+                        <div class="royalCaptionItem midTextWithBG" data-easing="easeOutSine" data-show-effect="moveleft fade" data-move-offset="50" style="background-color:#FE4365; top:153px; left:64px;">or as Gallery</div>
+                    </div>         	
+                </li>                
+                <li class="royalSlide" style="background:#490A3D;"> 
+                    <div class="royalCaption">
+                        <div class="royalCaptionItem midTextWithBG" data-show-effect="moveleft fade" data-move-offset="193" style="left:10px; top:10px;">Create</div>
+                        <div class="royalCaptionItem midTextWithBG" data-show-effect="moveleft fade" data-move-offset="231" style="left:10px; top:57px;">Awesome</div>
+                        <div class="royalCaptionItem midTextWithBG" data-show-effect="moveleft fade" data-move-offset="253" style="left:10px; top:104px;">Slideshows</div>
+                    
+                        <div class="royalCaptionItem" data-show-effect="moveright fade" style="background:url(img/bannerAssets/envato_logo_codecanyon.png) no-repeat; width:46px; height:43px; left:244px; top:205px;"></div>  	
+                    </div>         	
+                </li> 
+                <li class="royalSlide" style="background:#9A8194;"> 
+                    <div class="royalCaption">
+                         <div class="royalCaptionItem midTextWithBG" data-easing="easeOutCirc" data-show-effect="moveleft fade" data-move-offset="50" style="top:59px;  background-color:#5B527F; left:94px;">Custom</div>
+                        <div class="royalCaptionItem midTextWithBG" data-easing="easeOutCirc" data-show-effect="moveright fade" data-move-offset="50" style="background-color:#5B527F; top:106px; left:80px;">Animation</div>
+                        <div class="royalCaptionItem midTextWithBG" data-easing="easeOutCirc" data-show-effect="moveleft fade" data-move-offset="50" style="background-color:#5B527F; top:153px; left:98px;">Effects</div>
+                    </div>    	
+                </li>
+                <li class="royalSlide" style="background:#fac41a;"> 
+                    <div class="royalCaption">
+                    	<div class="royalCaptionItem" data-show-effect="movetop fade" style="background:url(img/bannerAssets/rockstar-wordpress-designer.jpg) no-repeat; width:92px; height:120px; left:104px; top:20px;"></div>
+                        <div class="royalCaptionItem midTextWithBG" data-show-effect="moveleft fade" data-move-offset="193" style="left:79px; top:150px; background-color:#4f95af;">Showcase</div>
+                        <div class="royalCaptionItem midTextWithBG" data-show-effect="moveright fade" data-move-offset="231" style="left:93px; top:192px; background-color:#4f95af;">Product</div>
+      	
+                    </div>         	
+                </li>
+                
+            </ul>    
+        </div> <!-- Banner 1 End -->
+   
+  
+       <div id="banner2" class="royalSlider clearfix">            
+            <ul class="royalSlidesContainer">
+                <li class="royalSlide" data-src="img/bannerAssets/1.jpg"></li> 
+                <li class="royalSlide" data-src="img/bannerAssets/2.jpg"></li> 
+                <li class="royalSlide" data-src="img/bannerAssets/3.jpg"></li> 
+                <li class="royalSlide" data-src="img/bannerAssets/4.jpg"></li> 
+            </ul>   
+            <p class="navId"></p>                  
+        </div><!--  Banner 2 End -->
+    	<span class="created-with-api-arrow"></span>
+</div> <!-- Banners container ENd -->
+		</div>		
+	</div>
+	<pre><code>
+	jQuery(document).ready(function($) {			   
+		var banner1 = $('#banner1').royalSlider({
+			slideTransitionType: "fade",
+   			slideTransitionSpeed: 600,              
+  			slideTransitionEasing: "easeInOutSine",
+			captionShowEffects: ["moveleft", "fade"],
+			captionShowDelay: 200,
+			captionShowSpeed: 400, 
+ 			captionShowEasing: "easeOutBack",
+			directionNavEnabled: false,
+			controlNavEnabled: true,
+			slideshowEnabled: true,           
+			slideshowDelay: 3000			
+	    }).data("royalSlider");				
+		
+	
+		var banner2 = $('#banner2').royalSlider({
+			slideTransitionSpeed:400,              
+  			slideTransitionEasing:"easeInOutCubic",
+			controlNavEnabled:false,
+			slideshowEnabled: false,           
+			slideshowDelay:4000,	
+			hideArrowOnLastSlide:false,
+			
+			beforeLoadStart:function() {					
+				$("p.navId").text((this.currentSlideId+1) + "/"  +   (this.numSlides) );
+				this.arrowLeft.html("&larr;");
+				this.arrowRight.html("&rarr;");
+			},
+			beforeSlideChange:function() {					
+				$("p.navId").text((this.currentSlideId+1) + "/"  +   (this.numSlides) );
+			}
+	    }).data("royalSlider");	 
+	});
+	</code></pre>
+	<script>            
+	jQuery(document).ready(function($) {			   
+		var banner1 = $('#banner1').royalSlider({
+			slideTransitionType: "fade",
+   			slideTransitionSpeed: 600,              
+  			slideTransitionEasing: "easeInOutSine",
+			captionShowEffects: ["moveleft", "fade"],
+			captionShowDelay: 200,
+			captionShowSpeed: 400, 
+ 			captionShowEasing: "easeOutBack",
+			directionNavEnabled: false,
+			controlNavEnabled: true,
+			slideshowEnabled: true,           
+			slideshowDelay: 3000			
+	    }).data("royalSlider");				
+		
+	
+		var banner2 = $('#banner2').royalSlider({
+			slideTransitionSpeed:400,              
+  			slideTransitionEasing:"easeInOutCubic",
+			controlNavEnabled:false,
+			slideshowEnabled: false,           
+			slideshowDelay:4000,	
+			hideArrowOnLastSlide:false,
+			
+			beforeLoadStart:function() {					
+				$("p.navId").text((this.currentSlideId+1) + "/"  +   (this.numSlides) );
+				this.arrowLeft.html("&larr;");
+				this.arrowRight.html("&rarr;");
+			},
+			beforeSlideChange:function() {					
+				$("p.navId").text((this.currentSlideId+1) + "/"  +   (this.numSlides) );
+			}
+	    }).data("royalSlider");	 
+	});
+    </script>
+</body>
+</html>

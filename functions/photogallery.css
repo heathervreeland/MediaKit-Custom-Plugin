@@ -1,0 +1,43 @@
+/* styles for photo gallery */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; } 
+
+.gallery-item {
+  float:left;
+  width:215px;
+  margin-right:24px;
+}
+.gallery-item.third {
+  margin-right:0;
+}
+.gallery-title-wrap {
+  border:6px solid #cdedea;
+  position:relative;
+  min-height:38px;
+  margin-top:10px;
+  padding:0 10px;
+}
+.gallery-title {
+  color: #00A79D;
+  font-family: GillSansRegular,Arial,Calibri,verdana,sans-serif;
+  font-size: 16px; font-size: 1.6rem;
+  letter-spacing: 1px; letter-spacing: 0.5remx;
+  line-height: 20px; line-height: 2.0rem;
+  text-align:center;
+  text-transform: uppercase;
+  background:#FFF;
+  min-height:35px;
+  margin:-10px 0;
+  padding:10px 0;
+}
+.gallery-title a {
+  color: #00A79D;
+  text-decoration:none;
+}
+.gallery-row-break {
+  clear:both;
+  display:block;
+  width:100%;
+  padding:15px;
+}

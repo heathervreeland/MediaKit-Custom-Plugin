@@ -1,0 +1,153 @@
+/* Clear fix solution for modern browsers */
+.cf:before,
+.cf:after {
+  content:"";
+  display:table;
+}
+
+.cf:after {
+  clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+  zoom:1;
+}
+.center { text-align:center; }
+
+
+/******************* 
+ *
+ * General Layout 
+ *
+ ********************/
+
+/* previous / next navigation */
+#prev-next-nav {
+  clear:both;
+  height:20px;
+  font-size:16px;font-size:1.6rem;
+  line-height:16px;line-height:1.6rem;
+}
+.testimonial-prev,
+.testimonial-next {
+  float:left;
+  width:45%;
+}
+.testimonial-next {
+  float:right;
+  text-align:right;
+}
+
+/* main testimonial slideshow */
+
+#bkt-testimonials-wrap {
+  display:table;
+  width:738px;
+  height:600px;
+}
+#bkt-testimonials {
+  width:738px;
+  height:600px;
+  /*padding:0 0 50px 0;*/
+  overflow-x:auto; 
+  overflow-y:hidden; 
+}
+#bkt-testimonials.horizontal-only {
+  height:auto;
+  max-height:600px;
+}
+.testimonial-container {
+  display:table-row;
+}
+  .jspContainer {
+  }
+  .testimonial-top {
+    margin:0;
+    padding:0;
+  }
+  .testimonial-bottom {
+    margin:0 0 20px 0;
+    padding:0 0 10px 0;
+    border-bottom:1px solid #999;
+  }
+  .testimonial-slide {
+    display: table-cell;
+    float:none;
+    position:relative;
+    width:700px;
+    min-width:700px;
+    height:600px;
+    padding:0 38px 0 0;
+  }
+    .testimonial-content-wrap {
+      float:left;
+      position:relative;
+      display:block;
+      width:420px;
+    }
+      .testimonial-content-wrap .testimonial-content {
+        background:url('images/testimonial-quote.png') 0 0 no-repeat;
+        padding:28px 35px 0 54px;
+      }
+			.testimonial-content-wrap .testimonial-content p {
+				font-size:12px;
+				line-height:20px;
+			}
+        .testimonial-content-wrap .testimonial-author-wrap {
+					color:#00a99e;
+          text-align:center;
+          text-transform:uppercase;
+          border:6px solid #cdedea;
+          padding-top:10px;
+        }
+          .testimonial-content-wrap .testimonial-author {
+            font-family: GillSansRegular;
+						font-size:16px;
+						letter-spacing: 1px;
+            background:#FFFFFF;
+            width:95%;
+            margin:-20px auto 0 auto;
+            padding-top:10px;
+          }
+          .testimonial-content-wrap .testimonial-company {
+            font-family: AbadiMTCondExtraBoldRegular;
+						font-size:19px;
+            font-weight:normal;
+            background:#FFFFFF;
+            width:95%;
+            margin:0 auto -20px auto;
+            padding-bottom:20px;
+          }
+    .testimonial-thumb-wrap { 
+      position:relative;
+    }
+      .testimonial-thumbnail_featured { }
+      .testimonial-thumbnail { 
+        position:absolute;
+        bottom:-40px;
+        right:150px;
+      }
+
+
+
+/*
+ * emm_paginate - WordPress Pagination Function
+ * Version: 1.0
+ *
+ * Copyright (c) 2009 Eric Martin http://www.ericmmartin.com/
+ * Link: http://www.ericmmartin.com/pagination-function-for-wordpress
+ *
+ */
+.emm-paginate {
+  width:100%;
+  margin:15px 0 0 -25px;
+  text-align:center;
+}
+.emm-paginate a {background:#ddd; border:1px solid #AB0600; color:#666; margin-right:4px; padding:3px 6px; text-align:center; text-decoration:none;}
+.emm-paginate a:hover, .emm-paginate a:active {background:#ccc; color:#888;}
+.emm-paginate .emm-title {color:#555; margin-right:4px;}
+.emm-paginate .emm-gap {color:#999; margin-right:4px;}
+.emm-paginate .emm-current {color:#fff; background:#AB0600; border:1px solid #444444; margin-right:4px; padding:3px 6px;}
+.emm-paginate .emm-page {}
+.emm-paginate .emm-prev, .emm-paginate .emm-next {}

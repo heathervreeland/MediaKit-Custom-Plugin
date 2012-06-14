@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>   
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>RoyalSlider Demo</title>  
+	
+ 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> 	
+ 	
+ 	
+    <link rel="stylesheet" href="css/royalslider.css" />
+    <link rel="stylesheet" href="css/royalslider-skins/default/default.css" />
+    <link rel="stylesheet" href="css/royalslider-skins/iskin/iskin.css" />
+    
+    <!-- preview-related stylesheet -->
+    <link rel="stylesheet" href="css/royalslider-preview.css" />
+    
+    
+    
+    <script src="js/jquery-1.6.2.min.js"></script>      
+	<script src="js/jquery.easing.1.3.min.js"></script> 
+    <script src="js/royal-slider-8.1.min.js"></script>
+    
+</head>
+<body>	
+
+	<div id="main-body">		
+		<h1>RoyalSlider Demo: Content Slider</h1>
+		<div id="slider-ajax-container">
+<div id="content-slider" class="royalSlider iskin">                
+    <ul class="royalSlidesContainer">    	
+        <li class="royalSlide"> 
+        	<div class="centeredSlide" style="margin-top:28px;">
+            	<img class="imageItem" src="img/contentSliderAssets/4.jpg" width="285" height="200"/>
+                <div class="slideTextBlock">
+                    <h4>Content Slider</h4>
+                    <p>You can place HTML content on each slide, touch navigation still works. Also you can disable mouse navigation completely or just for specific elements:</p>
+                    <a class="learnMore non-draggable" href="javascript:void()">Non-draggable element</a>
+                    <a class="learnMore" href="javascript:void()">Draggable element</a>
+                </div>
+            </div>
+        </li>
+        <li class="royalSlide"> 
+        	<div class="centeredSlide">
+            	<img class="imageItem" src="img/contentSliderAssets/1.jpg" width="195" height="240"/>
+            	<img class="imageItem" src="img/contentSliderAssets/2.jpg" width="178" height="240"/>
+            	<img class="imageItem" src="img/contentSliderAssets/3.jpg" width="197" height="240"/>
+            </div>
+        </li>
+        <li class="royalSlide"> 
+        	<div class="centeredSlide">            	
+                <div style="text-align:center; width: 660px; margin: 100px auto 0;">                    
+                    <p>Slider is tested on  iPad, iPad 2, iPhone 4, HTC Desire and Blackberry PlayBook.<br/> If you've found that something works incorrect on your device, so please contact me using contact form on my <a href="http://goo.gl/H9VAg">profile page</a> and I'll try to fix it asap.</p>
+                </div>   
+            </div>  	
+        </li>        
+    </ul>   
+</div>
+		</div>		
+	</div>
+	<button id="button-id">Click me</button>
+	<pre><code>
+	jQuery(document).ready(function($) {
+		var sliderInstance = $('#content-slider').royalSlider({
+	  		directionNavEnabled: true,
+			directionNavAutoHide: false,
+			welcomeScreenEnabled:false,
+			imageAlignCenter:true
+	    }).data('royalSlider');   				
+		$("#button-id").click(function() {
+			sliderInstance.next();
+		});
+	});
+	</code></pre>
+	<script>            
+	jQuery(document).ready(function($) {
+		var sliderInstance = $('#content-slider').royalSlider({
+	  		directionNavEnabled: true,
+			directionNavAutoHide: false,
+			welcomeScreenEnabled:false,
+			imageAlignCenter:true
+	    }).data('royalSlider');   				
+		$("#button-id").click(function() {
+			sliderInstance.next();
+		});
+	});
+    </script>
+</body>
+</html>
