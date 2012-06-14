@@ -129,6 +129,7 @@
           }
     .testimonial-thumb-wrap { 
       position:relative;
+      min-height:150px;
     }
     .single-bkttestimonial .testimonial-thumb-wrap { 
       float:left;
