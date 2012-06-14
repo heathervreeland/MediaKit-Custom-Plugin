@@ -86,9 +86,17 @@
       display:block;
       width:420px;
     }
+    .single-bkttestimonial .testimonial-content-wrap {
+      width:100%;
+    }
       .testimonial-content-wrap .testimonial-content {
         background:url('images/testimonial-quote.png') 0 0 no-repeat;
         padding:28px 35px 0 54px;
+      }
+      .single-bkttestimonial .testimonial-content-wrap .testimonial-content {
+        float:left;
+        width:380px;
+        padding:28px 40px 0 0; 
       }
 			.testimonial-content-wrap .testimonial-content p {
 				font-size:12px;
@@ -121,6 +129,10 @@
           }
     .testimonial-thumb-wrap { 
       position:relative;
+    }
+    .single-bkttestimonial .testimonial-thumb-wrap { 
+      float:left;
+      width:280px;
     }
       .testimonial-thumbnail_featured { }
       .testimonial-thumbnail { 
