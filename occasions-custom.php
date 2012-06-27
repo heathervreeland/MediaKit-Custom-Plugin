@@ -32,6 +32,7 @@ if ( !function_exists( 'add_action' ) ) {
  *************************************************/
 require( $plugin_path . '/custom-post-types/networking-event.php' );
 require( $plugin_path . '/custom-post-types/testimonials.php' );
+require( $plugin_path . '/custom-post-types/bits.php' );
 
 /*
  * some functions
