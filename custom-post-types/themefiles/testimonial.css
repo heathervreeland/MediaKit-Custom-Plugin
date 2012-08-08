@@ -62,6 +62,7 @@
 }
   .jspContainer {
   }
+  /*
   .testimonial-top {
     margin:0;
     padding:0;
@@ -71,19 +72,34 @@
     padding:0 0 10px 0;
     border-bottom:1px solid #999;
   }
+  */
   .testimonial-slide {
     display: table-cell;
-    float:none;
+   /* float:none;*/
     position:relative;
-    width:700px;
-    min-width:700px;
+    width:740px;
     height:500px;
+    /*
     padding:0 38px 0 0;
+    */
     margin:0;
+  }
+  .testimonial-slide-wrap {
+    min-width:740px;
+    height:500px;
+  /*
+    position:absolute;
+    top:0;
+  */
   }
     .testimonial-content-wrap {
       float:left;
       position:relative;
+      /*
+      position:absolute;
+      top:0;
+      left:0;
+      */
       display:block;
       width:420px;
       min-height:350px;
@@ -131,7 +147,14 @@
           }
     .testimonial-thumb-wrap { 
       position:relative;
+      float:right;
+    /*
+      position:absolute;
+      top:0;
+      right:30px;
+      */
       min-height:150px;
+      margin-right:30px;
     }
     .single-bkttestimonial .testimonial-thumb-wrap { 
       float:left;
@@ -141,7 +164,8 @@
       .testimonial-thumbnail { 
         position:absolute;
         bottom:-40px;
-        right:150px;
+        /*right:150px;*/
+        left:-40px;
       }
 
 

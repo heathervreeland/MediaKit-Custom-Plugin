@@ -660,6 +660,7 @@ function bkttestimonial_shortcode_func( $atts ) {
 
       //$output .= '  <div class="testimonial-top"></div>';
       $output .= '  <div class="testimonial-slide">';
+      $output .= '  <div class="testimonial-slide-wrap">';
 
       // only show the <dd>'s if they contain information
 
@@ -716,6 +717,7 @@ function bkttestimonial_shortcode_func( $atts ) {
       */
 
 
+      $output .= '  </div><!-- testimonial-slide-wrap -->';
       $output .= '  </div><!-- testimonial-slide -->';
       //$output .= '  <div class="testimonial-bottom"></div>';
 
