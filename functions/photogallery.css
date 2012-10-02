@@ -3,6 +3,9 @@
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; } 
 
+.gallery-index-wrapper {
+  height:300px;
+}
 .gallery-item {
   float:left;
   width:215px;
@@ -41,3 +44,80 @@
   width:100%;
   padding:15px;
 }
+
+/* styles for home slider */
+
+#home-slider {
+	width: 100%;
+	margin: 10px 0 30px 13px;
+}
+#home-slider .gallery-index-wrapper {
+	background: #EAF0DD;
+	height: 253px;
+	width: 944px;
+	margin-left: 25px;
+}
+#home-slider h3 {
+	font-size: 28px;
+	margin-bottom: 15px;
+}
+#home-slider .gallery-item {
+  display:none;
+  width:940px;
+}
+#home-slider a.button {
+	font-size: 14px;
+	letter-spacing: 1px;
+	text-align: left;
+	color: #00A79D;
+	display: block;
+	height: auto;
+	margin-top: 10px;
+	padding: 0;
+}
+#home-slider div.col.left {
+	float: left;
+	width: 450px;
+}
+#home-slider div.col.right {
+	font-size: 13px;
+	line-height: 18px;
+	float: right;
+	width: 440px;
+	margin-top: 30px;
+	padding-right: 20px;
+}
+ul#slider-nav {
+	background: url(../../../themes/occasions-media-kit/images/slider-nav-bg.png) no-repeat;
+	list-style:none;
+	height: 44px;
+	width: 994px;
+	margin: 0;
+	padding-left: 25px;
+}
+#slider-nav li {
+	border-right: 1px solid #fff;
+	float:left;
+  width:235px;
+  text-align:center;
+	margin-top: 1px;
+}
+#slider-nav li:last-child {
+	border:0;
+}
+#slider-nav a {
+	font-family: GillSansRegular;
+	font-size: 15px;
+	letter-spacing: 1px;
+	line-height: 34px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #00A79D;
+}
+#slider-nav .activeSlide a {
+	color: #fff;
+}
+#slider-nav li.activeSlide {
+  background: #00A79D;
+}
+#slider-nav a:focus { outline: none; }

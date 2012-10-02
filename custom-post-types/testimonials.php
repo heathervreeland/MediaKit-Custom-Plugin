@@ -762,4 +762,296 @@ if (is_admin()) {
     }
   }
 }
+
+/**
+ * Testimonial_sidebar_widget 
+ * @widget_category - sets testimonial category to display
+ *************************************************/
+
+class TestimonialWidget extends WP_Widget {
+
+/* PREP FOR PULLING DATA AND SETTING OUTPUT
+ ******************************************************/
+
+  /** constructor */
+
+  function __construct() {
+    $widget_ops = array('description' => 'A testimonial widget that gives you the ability to add testimonials to the sidebar.' );
+    parent::__construct(false, $name = 'TestimonialWidget', $widget_ops );  
+  }
+
+  /** @see WP_Widget::widget 
+  * this is the output to the browser
+  * - pull the options out of $args
+  * - check to see if empty, then assign them value from $instance
+  * - output images and links
+  */
+  function widget($args, $instance) {   
+
+    /* validation code - digits only, no dots */
+    function is_digits($element) {
+      return !preg_match ("/[^0-9]/", $element);
+    }
+    
+
+    extract( $args );
+    $title = apply_filters('widget_title', $instance['title']);
+    $widget_category = empty($instance['widget_category']) ? '0' : apply_filters('widget_category', (int)$instance['widget_category']);
+    $testimonial_page_slug = empty($instance['testimonial_page_slug']) ? '0' : apply_filters('testimonial_page_slug', $instance['testimonial_page_slug']);
+    $show_thumbnail = isset($instance['show_thumbnail']) ? $instance['show_thumbnail'] : false;
+
+    $slideshow_speed = isset($instance['slideshow_speed']) ? $instance['slideshow_speed'] : false;
+    if ( is_digits( $slideshow_speed ) ) {
+      $slideshow_speed = $slideshow_speed * 1000;
+    } else {
+      $slideshow_speed = 4000; 
+    }
+
+    $slideshow_transition = isset($instance['slideshow_transition']) ? $instance['slideshow_transition'] : false;
+    if ( is_digits( $slideshow_transition ) ) {
+      $slideshow_transition = $slideshow_transition * 1000;
+    } else {
+      $slideshow_transition = 4000; 
+    }
+
+    // grab the page
+    global $wp_query;
+
+    // pull json wrapper to ensure legacy PHP installs can handle the json call when sending the slideshow speed setting to the necessary javascript
+    require('themefiles/jsonwrapper/jsonwrapper.php');
+
+    // grab the query_vars for testing page slug against excluded page slug
+    $this_page_vars = $wp_query->query_vars;
+
+    // pull the current page ID 
+    $this_pageid = $wp_query->post->ID;
+
+    // set boolean to true 
+    $is_not_testimonial_page = true;
+
+    // check if we are on the excluded testimonial page and adjust boolean accordingly
+    if ( $this_pageid != '' ) {
+      if ( $this_pageid == $testimonial_page_slug ) {
+        $is_not_testimonial_page = false;
+      }
+    }
+
+    // grab the testimonials
+    $tloop_args = array( 
+      'post_type' => 'bkttestimonial', 
+      'tax_query' => array( 
+        array(
+          'taxonomy' => 'bkttestimonial-categories', 
+          'field' => 'id', 
+          'terms' => $widget_category
+        )
+      ), 
+      'order' => 'ASC', 
+      'orderby' => 'menu_order', 
+      'posts_per_page' => '-1' 
+    );
+    $testimonial_loop = get_posts( $tloop_args );
+    /*
+    echo '<pre>';
+    var_dump($widget_category);
+    echo '</pre>';
+    */
+
+    // run the test against the excluded page slug, and be sure to only show if there are any testimonials
+    if ( $is_not_testimonial_page && $testimonial_loop != NULL ) {
+
+      global $post;
+
+      echo $before_widget; 
+
+    ?>
+    <script>
+    jQuery(document).ready(function($){
+      var $testimonialSlides = $('#testimonial-slideshow');
+      var slideshow_speed = <?php echo json_encode( $slideshow_speed ); ?>;
+      var slideshow_transition = <?php echo json_encode( $slideshow_transition ); ?>;
+      $testimonialSlides.cycle({
+        timeout: slideshow_speed,
+        speed: slideshow_transition,
+        fx:'fade',
+        fit:1,
+        width:null,
+        cleartypeNoBg:true
+      });
+    }); // end ready()
+    </script>
+
+
+    <h3 class="widget-title"><?php echo $title; ?></h3>
+    <div id="testimonial-slideshow">
+
+    <?php 
+      foreach ( $testimonial_loop as $side_loop ) {
+
+/* PULL THE DATA 
+ ******************************************************/
+
+        //$post_id = get_the_ID(); //$post->ID;
+        $post_id = $side_loop->ID; 
+
+        // get the thumbnail
+        $testimonial_thumbnail_id = get_post_meta( $post_id, '_testimonial_thumbnail_id', TRUE );
+        $testimonial_thumbnail_full = wp_get_attachment_image( $testimonial_thumbnail_id, 'testimonial-thumb' );
+
+        // get the thumbnail title
+        $testimonial_thumbnail_title = get_post_meta( $post_id, '_testimonial_thumbnail_title', TRUE );
+
+        // get the headline 
+        $testimonial_headline = get_post_meta( $post_id, '_testimonial_headline', TRUE );
+
+        // get the title
+        $testimonial_title = get_post_meta( $post_id, '_testimonial_title', TRUE );
+
+        // get the company
+        $testimonial_company = get_post_meta( $post_id, '_testimonial_company', TRUE );
+
+        // get the url 
+        $testimonial_url = get_post_meta( $post_id, '_testimonial_url', TRUE );
+
+        // get the testimonial author 
+        $testimonial_author = get_post_meta( $post_id, '_testimonial_author', TRUE );
+
+        // create a separator and set to show if author exists
+        $testimonial_separator = '';
+        if ( $testimonial_author != '' ) {
+          $testimonial_separator = ', ';
+        }
+
+/* SET THE OUTPUT 
+ ******************************************************/
+    ?>
+      <div class="testimonial-slide">
+        <div class="testimonial-slide-top"></div>
+        <div class="testimonial-slide-content">
+<?php if ( $testimonial_thumbnail_full != '' && $show_thumbnail == 'on' ) { ?>
+          <div class="testimonial-thumbnail">
+            <?php echo $testimonial_thumbnail_full; ?>
+            <span><?php echo $testimonial_thumbnail_title; ?></span>
+          </div>
+<?php } ?>
+<?php if ( $testimonial_headline != '' ) { ?>
+            <p class="testimonial-headline"><?php echo $testimonial_headline; ?></p>
+<?php } ?>
+          <p class="testimonial-content"><?php echo $side_loop->post_content; ?></p>
+          <p><div><?php  if ( $testimonial_author != '' ) { echo '<span class="testimonial-author">&mdash; ' . $testimonial_author . '</span>'; } if ( $testimonial_title != '' ) { echo $testimonial_separator . $testimonial_title;  };  ?></div>
+      <?php
+      if ( $testimonial_company != '' ) { ?>
+            <div><?php echo $testimonial_company; ?></div>
+<?php } ?>
+<?php if ( $testimonial_url != '' ) { ?>
+            <div><?php echo $testimonial_url; ?></div>
+<?php } ?>
+          </p>
+        </div>
+        <div class="testimonial-slide-bottom"></div>
+      </div>
+
+    <?php } // end foreach $testimonial_loop ; ?>
+
+    </div><!-- end testimonial-slideshow -->
+<?php
+    } // end if ( $post->postname != $testimonial_page_slug ) 
+  } // end widget()
+
+  /** @see WP_Widget::update 
+  * updates widget options
+  */
+  function update($new_instance, $old_instance) {       
+    $instance = $old_instance;
+    $instance['title'] = strip_tags($new_instance['title']);
+    $instance['testimonial_page_slug'] = strip_tags($new_instance['testimonial_page_slug']);
+    $instance['widget_category'] = $new_instance['widget_category'];
+    $instance['show_thumbnail'] =  strip_tags($new_instance['show_thumbnail']);
+    $instance['slideshow_speed'] =  strip_tags($new_instance['slideshow_speed']);
+    $instance['slideshow_transition'] =  strip_tags($new_instance['slideshow_transition']);
+    return $instance;
+  }
+
+  /** @see WP_Widget::form 
+  * populates form in admin area for widget
+  */
+  function form($instance) {        
+    $instance = wp_parse_args( 
+      (array) $instance, 
+      array( 
+        'title' => '',
+        'widget_category' => '0',
+        'testimonial_page_slug' => '0',
+        'show_thumbnail' => false,
+        'slideshow_speed' => '4',
+        'slideshow_transition' => '4'
+      ) 
+    );
+    $title = esc_attr($instance['title']);
+    $testimonial_page_slug = (int)$instance['testimonial_page_slug'];
+    $testimonial_page_id = get_page_by_path($testimonial_page_slug);
+    
+    // the testimonial category drop down
+    $widget_category = (int)$instance['widget_category'];
+    /*
+    $taxonomy = 'bkttestimonial-categories';
+    $tax_terms = get_terms($taxonomy);
+    $widget_category_drop_down = '';
+    $widget_category_drop_down .= '<select id="' . $this->get_field_id('widget_category') . '" name="' . $this->get_field_name('widget_category') . '">';
+    $selected = '';
+
+    foreach ($tax_terms as $tax_term) {
+      if ( $widget_category == $tax_term->name ) {
+        $selected = 'selected="selected"';
+      }
+      $widget_category_drop_down .= '<option class="level-0" ' . $selected . ' >' . $tax_term->name . '</option>';
+    }
+    $widget_category_drop_down .= '</select>';
+    */
+    $cat_args = array(
+      //'show_option_all'    => true,
+      //'show_option_none'   => ,
+      'orderby'            => 'ID', 
+      'order'              => 'ASC',
+      'show_count'         => 0,
+      'hide_empty'         => 1, 
+      'child_of'           => 0,
+      //'exclude'            => ,
+      'echo'               => 1,
+      'selected'           => $widget_category,
+      'hierarchical'       => 0, 
+      'name'               => $this->get_field_name('widget_category'),
+      'id'                 => $this->get_field_id('widget_category'),
+      'class'              => 'postform',
+      'depth'              => 0,
+      'tab_index'          => 0,
+      'taxonomy'           => 'bkttestimonial-categories',
+      'hide_if_empty'      => false 
+    );
+
+    $show_thumbnail = $instance['show_thumbnail'];
+    $slideshow_speed = $instance['slideshow_speed'];
+    $slideshow_transition = $instance['slideshow_transition'];
+  ?>
+
+    <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Testimonial Title:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+    <p><label for="<?php echo $this->get_field_id('widget_category'); ?>"><?php _e('Testimonial Category:'); wp_dropdown_categories($cat_args); ?></label></p>
+    <p>the widget category id is <?php echo $widget_category; ?></p>
+    <p><label for="<?php echo $this->get_field_id('testimonial_page_slug'); ?>"><?php _e('Exclude from page:'); echo '<br>'; wp_dropdown_pages( array( 'echo' => 1, 'show_option_none' => 'Choose a Page', 'selected' => $testimonial_page_slug, 'name' =>  $this->get_field_name('testimonial_page_slug'), 'id' =>  $this->get_field_id('testimonial_page_slug') ) ); ?> </label></p>
+    <p>
+      <label for="<?php echo $this->get_field_id('show_thumbnail'); ?>"><?php _e('Show Thumbnail?'); ?></label>
+      <input class="checkbox" type="checkbox" <?php if ( $show_thumbnail == 'on' ) echo 'checked'; ?> id="<?php echo $this->get_field_id( 'show_thumbnail' ); ?>" name="<?php echo $this->get_field_name( 'show_thumbnail' ); ?>" />
+            
+    </p>
+    <h4>Slideshow Speed</h4>
+    <p><label for="<?php echo $this->get_field_id('slideshow_speed'); ?>"><?php _e('Length of Reading Time in seconds:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('slideshow_speed'); ?>" name="<?php echo $this->get_field_name('slideshow_speed'); ?>" type="text" value="<?php echo $slideshow_speed; ?>" /></label></p>
+    <p><label for="<?php echo $this->get_field_id('slideshow_transition'); ?>"><?php _e('Length of Slide Transition in seconds:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('slideshow_transition'); ?>" name="<?php echo $this->get_field_name('slideshow_transition'); ?>" type="text" value="<?php echo $slideshow_transition; ?>" /></label></p>
+  <?php
+  } // end form()
+} // end class
+
+add_action( 'widgets_init', create_function( '', 'register_widget( "TestimonialWidget" );' ) );
+
+
+
 ?>

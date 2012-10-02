@@ -73,18 +73,45 @@
     border-bottom:1px solid #999;
   }
   */
-  .testimonial-slide {
+  #home .testimonial-slide {
+    display: table-cell;
+   /* float:none;*/
+    position:relative;
+    width:480px;
+    height:100px;
+		border: 6px solid #CDEDEA;
+		min-height: 100px;
+		padding: 0 20px;
+    /*
+    padding:0 38px 0 0;
+    */
+  }
+	
+	 #bkt-testimonials .testimonial-slide {
     display: table-cell;
    /* float:none;*/
     position:relative;
     width:740px;
     height:500px;
-    /*
-    padding:0 38px 0 0;
-    */
-    margin:0;
   }
-  .testimonial-slide-wrap {
+	
+	.testimonial-slide-content {
+		background: white;
+		min-height: 100px;
+		margin: -10px 0;
+		padding: 25px 0 0;
+	}
+	
+  #home .testimonial-slide-wrap {
+    min-width:540px;
+    height:100px;
+  /*
+    position:absolute;
+    top:0;
+  */
+  }
+	
+	#bkt-testimonials .testimonial-slide-wrap {
     min-width:740px;
     height:500px;
   /*
@@ -92,6 +119,7 @@
     top:0;
   */
   }
+	
     .testimonial-content-wrap {
       float:left;
       position:relative;
@@ -137,13 +165,15 @@
             padding-top:10px;
           }
           .testimonial-content-wrap .testimonial-company {
-            font-family: AbadiMTCondExtraBoldRegular;
+            font-family: oswaldbook, AbadiMTCondExtraBoldRegular;
 						font-size:19px;
             font-weight:normal;
             background:#FFFFFF;
             width:95%;
             margin:0 auto -20px auto;
             padding-bottom:20px;
+						letter-spacing:1px;
+						color: #000;
           }
     .testimonial-thumb-wrap { 
       position:relative;
