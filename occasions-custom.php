@@ -38,5 +38,6 @@ require( $plugin_path . '/custom-post-types/bits.php' );
  * some functions
  *************************************************/
 require( $plugin_path . '/functions/photo-gallery.php' );
+require( $plugin_path . '/functions/slider.php' );
 
 ?>
