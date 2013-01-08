@@ -33,10 +33,12 @@ if ( !function_exists( 'add_action' ) ) {
 require( $plugin_path . '/custom-post-types/networking-event.php' );
 require( $plugin_path . '/custom-post-types/testimonials.php' );
 require( $plugin_path . '/custom-post-types/bits.php' );
+require( $plugin_path . '/custom-post-types/print-archives.php' );
 
 /*
  * some functions
  *************************************************/
 require( $plugin_path . '/functions/photo-gallery.php' );
+require( $plugin_path . '/functions/slider.php' );
 
 ?>
