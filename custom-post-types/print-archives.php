@@ -197,9 +197,13 @@ function insert_print_archive ($atts) {
       'category' => 'florida',
     ), $atts ) );
 
-    $paloop = new WP_Query( array( 'post_type' => 'print-archive', 'print-archive-categories' => $category, 'order' => 'ASC', 'orderby' => 'date', 'posts_per_page' => '-1' ) );
+    $paloop = new WP_Query( array( 'post_type' => 'print-archive', 'print-archive-categories' => $category, 'order' => 'DESC', 'orderby' => 'date', 'posts_per_page' => '-1' ) );
 
     if ( $paloop ) :
+      
+      $myCount = $paloop->post_count;
+
+      $i = 0;
 
       $output = NULL;
 
@@ -208,7 +212,10 @@ function insert_print_archive ($atts) {
       $output .= '<div class="print-archive-content-wrap">';
 
       while ( $paloop->have_posts() ) : $paloop->the_post();
-        
+
+        if ( $i%4 ==  0 ) {
+          $output .= '<div style="height:5px;clear:both;width:100%;"></div>';
+        }
         $post_id = get_the_ID();
 
         // get the published month
@@ -229,11 +236,15 @@ function insert_print_archive ($atts) {
 
         $output .= '</div>'; 
 
+        $i++;
+
       endwhile;
 
       $output .= '</div>';
 
       return $output;
+
+      $i = 0;
 
     endif;
 
