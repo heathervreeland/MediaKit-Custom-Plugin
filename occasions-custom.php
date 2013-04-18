@@ -40,5 +40,7 @@ require( $plugin_path . '/custom-post-types/print-archives.php' );
  *************************************************/
 require( $plugin_path . '/functions/photo-gallery.php' );
 require( $plugin_path . '/functions/slider.php' );
+require( $plugin_path . '/functions/insert-latest-posts.php' );
+require( $plugin_path . '/functions/get-excerpt-by-id.php' );
 
 ?>
