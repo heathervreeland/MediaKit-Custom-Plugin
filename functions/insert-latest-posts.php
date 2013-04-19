@@ -33,7 +33,7 @@ function insert_latest_posts( $num=0 ) {
     $output .=	'<div class="recent-post cf">';
     $output .=	'  <div class="recent-post-image">';
 
-    if(has_post_thumbnail()) {
+    if(has_post_thumbnail( $post_id )) {
 
       $output .=	'    <a href="' . get_permalink( $post_id ) . '">';
       $output .=	get_the_post_thumbnail( $post_id, "medium" );
