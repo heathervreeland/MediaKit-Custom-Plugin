@@ -14,18 +14,20 @@
 *
 */
 
-$plugin_path = dirname(__FILE__);
-
 /*
  *
- * General Stuff
+ * Security 
  *************************************************/
 
-// Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
-	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
-	exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+  die;
 }
+
+/*
+ * on to more productive things
+ *************************************************/
+$plugin_path = dirname(__FILE__);
 
 /*
  * Register_custom_post_type 

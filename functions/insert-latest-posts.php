@@ -25,6 +25,9 @@ function insert_latest_posts( $num=0 ) {
 
   $myposts = get_posts(array('post_type' => 'post', 'numberposts' => $num_posts, 'offset' => 0,'post_status'=>'publish'));
 
+  // set the output variable
+  $output = '';
+
   foreach($myposts as $apost) {
 
     // grabbing the post ID

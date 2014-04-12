@@ -11,7 +11,7 @@ add_action( 'init', 'create_bit_post_type' );
 
 function create_bit_post_type() {
 
-  $icon = plugins_url() . '/solamar-custom/custom-post-types/images/script-code-single.png';
+  $icon = plugins_url() . '/occasions-custom/custom-post-types/images/script-code-single.png';
 
   // create the custom post type
   register_post_type( 'bit',

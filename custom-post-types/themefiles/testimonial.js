@@ -14,9 +14,6 @@ jQuery(document).ready(function($){
     $('#testimonial-slideshow').height(tallest);
 
   });
-
-  // remove the border from below the last testimonial listing
-  $('#solamar-testimonials .testimonial-wrapper').last().find('.testimonial-bottom').css('border-bottom','none');
   */
 
   $("#bkt-testimonials").jScrollPane({ });

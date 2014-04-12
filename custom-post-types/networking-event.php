@@ -76,30 +76,36 @@ function create_networking_event_post_type() {
 add_action("template_redirect", 'my_theme_redirect');
 
 function my_theme_redirect() {
+
   global $wp;
-  $public_query_vars = $wp->public_query_vars;  
+
   $plugindir = dirname( __FILE__ );
 
-  //A Specific Custom Post Type
-  if ($wp->query_vars["post_type"] == 'networking-event') {
-    $templatefilename = 'single-network.php';
-    if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
-      $return_template = TEMPLATEPATH . '/' . $templatefilename;
-    } else {
-      $return_template = $plugindir . '/themefiles/' . $templatefilename;
-    }   
-    do_theme_redirect($return_template);
+  $is_post = array_key_exists('post_type', $wp->query_vars );
 
-    //A Simple Index Page
-  } elseif ($wp->query_vars["pagename"] == 'daily-journal') {
-    $templatefilename = 'page-daily-journals.php';
-    if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
-      $return_template = TEMPLATEPATH . '/' . $templatefilename;
-    } else {
-      $return_template = $plugindir . '/themefiles/' . $templatefilename;
-    }   
-    do_theme_redirect($return_template);
+  if ( $wp->query_vars ) {
+    if ( is_page() && $wp->query_vars["pagename"] == 'daily-journal') {
+      $templatefilename = 'page-daily-journals.php';
+      if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
+        $return_template = TEMPLATEPATH . '/' . $templatefilename;
+      } else {
+        $return_template = $plugindir . '/themefiles/' . $templatefilename;
+      }   
+      do_theme_redirect($return_template);
+
+    } elseif ( $is_post && $wp->query_vars['post_type'] == 'networking-event') {
+      $templatefilename = 'single-network.php';
+      if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
+        $return_template = TEMPLATEPATH . '/' . $templatefilename;
+      } else {
+        $return_template = $plugindir . '/themefiles/' . $templatefilename;
+      }   
+      do_theme_redirect($return_template);
+
+      //A Simple Index Page
+    } 
   }
+
 }
 
 function do_theme_redirect($url) {

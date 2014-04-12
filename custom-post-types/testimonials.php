@@ -34,10 +34,9 @@
  * General Stuff
  *************************************************/
 
-// Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
-	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
-	exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+  die;
 }
 
 // backward compatible constants
@@ -469,9 +468,7 @@ if (!is_admin()) {
     
     // check to see if jquery-ui-core is already in called by wordpress.  If not, add the latest version as of 10/2011 from the cdn
     if ( ! ( isset( $GLOBALS['wp_scripts']->registered[ 'jquery-ui-core' ] ) ) ) {
-      wp_deregister_script('jquery-ui');
-      wp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js', array('jquery'), false);  
-      wp_enqueue_script('jquery-ui');
+      wp_enqueue_script('jquery-ui-core');
     }
 
     // toss in plugin specific javascript and styles
@@ -485,12 +482,15 @@ if (!is_admin()) {
   }
 
 } else {
+
+  add_action('wp_enqueue_scripts', 'show_public_testimonial_javascript');
+
+  function show_public_testimonial_javascript() {
     // check to see if jquery-ui-core is already in called by wordpress.  If not, add the latest version as of 10/2011 from the cdn
     if ( ! ( isset( $GLOBALS['wp_scripts']->registered[ 'jquery-ui-core' ] ) ) ) {
-      //wp_deregister_script('jquery-ui');
-      wp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js', array('jquery'), false);  
-      //wp_enqueue_script('jquery-ui');
+      wp_enqueue_script('jquery-ui-core');
     }
+  }
 }
 
 /* 
@@ -501,24 +501,31 @@ if (!is_admin()) {
 add_action("template_redirect", 'testimonial_theme_redirect');
 
 function testimonial_theme_redirect() {
+
   global $wp;
-  $public_query_vars = $wp->public_query_vars;  
+
   $plugindir = dirname( __FILE__ );
 
-  //A Specific Custom Post Type
-  if ($wp->query_vars["post_type"] == 'bkttestimonial') {
+  $is_post = array_key_exists('post_type', $wp->query_vars );
 
-    $templatefilename = 'single-bkttestimonial.php';
+  if($wp->query_vars) {
 
-    if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
-      $return_template = TEMPLATEPATH . '/' . $templatefilename;
-    } else {
-      $return_template = $plugindir . '/themefiles/' . $templatefilename;
-    }   
+    //A Specific Custom Post Type
+    if ( $is_post && $wp->query_vars["post_type"] == 'bkttestimonial') {
 
-    do_testimonial_theme_redirect($return_template);
+      $templatefilename = 'single-bkttestimonial.php';
 
+      if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
+        $return_template = TEMPLATEPATH . '/' . $templatefilename;
+      } else {
+        $return_template = $plugindir . '/themefiles/' . $templatefilename;
+      }   
+
+      do_testimonial_theme_redirect($return_template);
+
+    }
   }
+
 }
 
 function do_testimonial_theme_redirect($url) {

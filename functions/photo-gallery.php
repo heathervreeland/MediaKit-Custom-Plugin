@@ -122,21 +122,25 @@ function show_public_javascript() {
 
   global $post;
 
-  $css_rs_file = plugins_url('/js/gallery/royalslider.css', __FILE__ ) ;
-  $css_default_file = plugins_url('/js/gallery/royalslider-skins/occasions/default.css', __FILE__ ) ;
+  if ( $post) {
 
-  $script_easing_file = plugins_url('/js/gallery/jquery.easing.1.3.min.js', __FILE__ ) ;
-  $script_rs_file = plugins_url('/js/gallery/royal-slider-8.1.min.js', __FILE__ ) ;
-  $script_gallery_file = plugins_url('/js/gallery/gallery.js', __FILE__ ) ;
+    $css_rs_file = plugins_url('/js/gallery/royalslider.css', __FILE__ ) ;
+    $css_default_file = plugins_url('/js/gallery/royalslider-skins/occasions/default.css', __FILE__ ) ;
 
-  // if we are looking at a Networking Event Custom Post type, then spit out these scripts
-  if( $post->post_type == 'networking-event' ) {
-    wp_enqueue_style( 'rs-style', $css_rs_file );
-    wp_enqueue_style( 'rs-default-style', $css_default_file );
+    $script_easing_file = plugins_url('/js/gallery/jquery.easing.1.3.min.js', __FILE__ ) ;
+    $script_rs_file = plugins_url('/js/gallery/royal-slider-8.1.min.js', __FILE__ ) ;
+    $script_gallery_file = plugins_url('/js/gallery/gallery.js', __FILE__ ) ;
 
-    wp_enqueue_script( 'rs-easing', $script_easing_file, array( 'jquery' ), '1.3.2', false );
-    wp_enqueue_script( 'rs-script', $script_rs_file, array( 'jquery','rs-easing' ), '8.1', false );
-    wp_enqueue_script( 'rs-gallery-script', $script_gallery_file, array( 'jquery','rs-easing','rs-script' ), '8.1', false );
+    // if we are looking at a Networking Event Custom Post type, then spit out these scripts
+    if( $post->post_type == 'networking-event' ) {
+      wp_enqueue_style( 'rs-style', $css_rs_file );
+      wp_enqueue_style( 'rs-default-style', $css_default_file );
+
+      wp_enqueue_script( 'rs-easing', $script_easing_file, array( 'jquery' ), '1.3.2', false );
+      wp_enqueue_script( 'rs-script', $script_rs_file, array( 'jquery','rs-easing' ), '8.1', false );
+      wp_enqueue_script( 'rs-gallery-script', $script_gallery_file, array( 'jquery','rs-easing','rs-script' ), '8.1', false );
+    }
+
   }
 
 }

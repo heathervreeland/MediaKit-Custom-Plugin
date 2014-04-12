@@ -1,7 +1,24 @@
 <?php
 
-//add_image_size( 'gallery_index_thumb', 215, 140, true );
-//add_image_size( 'gallery_carousel_thumb', 140, 60, true );
+/*
+ *
+ * Security 
+ *************************************************/
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+  die;
+}
+
+function insert_slider_scripts() { 
+
+  $photo_slider_style = plugins_url('photogallery.css', __FILE__ );
+  $photo_slider_js = plugins_url('js/gallery/slider.js', __FILE__ );
+
+  wp_enqueue_style( 'photo-gallery-style', $photo_slider_style );
+  wp_enqueue_script( 'photo-slider-js', $photo_slider_js);
+}
+add_action('wp_enqueue_scripts', 'insert_slider_scripts');
 
 function insert_slider() {
 
@@ -9,6 +26,7 @@ function insert_slider() {
   $loop = new WP_Query( array( 'post_type' => 'bit', 'bits' => 'home-slider', 'order' => 'ASC', 'orderby' => 'menu_order', 'posts_per_page' => '4' ) );
 
   if ( $loop->have_posts() ) :
+
 
     $output = '<div class="gallery-index-wrapper clearfix">';
 
@@ -39,13 +57,6 @@ function insert_slider() {
     endwhile;
     $output .= '</ul>';
 
-    $photo_slider_style = plugins_url('photogallery.css', __FILE__ );
-
-    wp_enqueue_style( 'photo-gallery-style', $photo_slider_style );
-
-    $photo_slider_js = plugins_url('js/gallery/slider.js', __FILE__ );
-
-    wp_enqueue_script( 'photo-slider-js', $photo_slider_js);
 
     return $output;
 

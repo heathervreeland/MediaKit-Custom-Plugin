@@ -8,7 +8,7 @@ add_action( 'init', 'create_print_archive_post_type' );
 
 function create_print_archive_post_type() {
 
-  $icon = plugins_url() . '/solamar-custom/custom-post-types/images/script-code-single.png';
+  $icon = plugins_url() . '/occasions-custom/custom-post-types/images/script-code-single.png';
 
   // create the custom post type
   register_post_type( 'print-archive',
@@ -260,24 +260,30 @@ add_shortcode( 'print-archive', 'insert_print_archive' );
 add_action("template_redirect", 'print_archive_theme_redirect');
 
 function print_archive_theme_redirect() {
+
   global $wp;
-  $public_query_vars = $wp->public_query_vars;  
+
   $plugindir = dirname( __FILE__ );
 
-  //A Specific Custom Post Type
-  if ($wp->query_vars["post_type"] == 'print-archive') {
+  $is_post = array_key_exists('post_type', $wp->query_vars );
 
-    $templatefilename = 'single-print-archive.php';
+  if ( $wp->query_vars ) {
+    //A Specific Custom Post Type
+    if ( $is_post && $wp->query_vars["post_type"] == 'print-archive') {
 
-    if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
-      $return_template = TEMPLATEPATH . '/' . $templatefilename;
-    } else {
-      $return_template = $plugindir . '/themefiles/' . $templatefilename;
-    }   
+      $templatefilename = 'single-print-archive.php';
 
-    do_print_archive_theme_redirect($return_template);
+      if (file_exists(TEMPLATEPATH . '/' . $templatefilename)) {
+        $return_template = TEMPLATEPATH . '/' . $templatefilename;
+      } else {
+        $return_template = $plugindir . '/themefiles/' . $templatefilename;
+      }   
 
+      do_print_archive_theme_redirect($return_template);
+
+    }
   }
+
 }
 
 function do_print_archive_theme_redirect($url) {
